@@ -9,6 +9,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -97,13 +99,52 @@ class MainActivity : ComponentActivity() {
 //                        .fillMaxSize())
 //                }
 
-                SimpleSnackBar()
-
+                //SimpleSnackBar()
+                //SimpleListForLoop()
+                SimpleListForEach()
             }
         }
     }
 }
 
+@Composable
+fun SimpleListForEach(){
+
+    LazyColumn(){
+        itemsIndexed(
+            listOf("This","Is","Jetpack","Compose")
+        ){
+            index, item ->
+            Text(
+                text = item,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp)
+            )
+        }
+    }
+}
+@Composable
+fun SimpleListForLoop(){
+
+    LazyColumn{
+        items(500) {
+            Text(
+                text = "Item $it",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp)
+            )
+        }
+    }
+
+}
 @Composable
 fun SimpleSnackBar() {
 
